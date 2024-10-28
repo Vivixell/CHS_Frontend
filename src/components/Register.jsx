@@ -1,9 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import styled from "styled-components";
-import { RxCross2 } from "react-icons/rx";
-import AnimateText from "@/animations/AnimateText";
 import { useDispatch, useSelector } from "react-redux";
 import { RegisterFormInputData } from "@/constants/data/formdata";
 import { RegisterUser } from "@/features/auth/authReducer";
