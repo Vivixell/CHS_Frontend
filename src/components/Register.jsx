@@ -7,7 +7,7 @@ import AnimateText from "@/animations/AnimateText";
 import { useDispatch, useSelector } from "react-redux";
 import { RegisterFormInputData } from "@/constants/data/formdata";
 import { RegisterUser } from "@/features/auth/authReducer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loader from "./Loader";
 
 const RegisterModal = () => {
@@ -15,6 +15,8 @@ const RegisterModal = () => {
   const { registerisSuccess, registerisLoading } = useSelector(
     (store) => store.auth
   );
+  const navigate = useNavigate()
+
   const [formvalue, setFormValue] = useState({
     name: "",
     username: "",
@@ -39,7 +41,15 @@ const RegisterModal = () => {
     e.preventDefault();
     dispatch(RegisterUser(formvalue));
   };
+  useEffect(() => {
+    if (registerisSuccess && currentUser) {
+      const timer = setTimeout(() => {
+        navigate('/login')
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
 
+  }, [registerisSuccess, currentUser])
   return (
     <RegisterModalStyles
       className="w-full h-screen"
