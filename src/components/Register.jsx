@@ -9,7 +9,7 @@ import Loader from "./Loader";
 
 const RegisterModal = () => {
   const dispatch = useDispatch();
-  const { registerisSuccess, registerisLoading } = useSelector(
+  const { registerisSuccess, registerisLoading,currentUser } = useSelector(
     (store) => store.auth
   );
   const navigate = useNavigate()
