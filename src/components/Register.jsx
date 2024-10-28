@@ -39,14 +39,14 @@ const RegisterModal = () => {
     dispatch(RegisterUser(formvalue));
   };
   useEffect(() => {
-    if (registerisSuccess && currentUser) {
+    if (registerisSuccess) {
       const timer = setTimeout(() => {
         navigate('/login')
       }, 3000)
       return () => clearTimeout(timer)
     }
 
-  }, [registerisSuccess, currentUser])
+  }, [registerisSuccess])
   return (
     <RegisterModalStyles
       className="w-full h-screen"
